@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{%block group16 %}Humidity{%endblock%}
+
+{%block content %} 
+
+
+<body class="humidity">
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="logo">💧 Humidity</div>
+            <nav>
+                <ul>
+                   <a  href="/Home" ><button type="submit"><li>Home Page</li></button> </a>
+                    <li class="active">Dashboard</li>
+                    <li>Analytics</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1>Humidity Dashboard</h1><br>
+                <h2>Hello {{ user }}, monitor your sensor</h2>
+                <a href="/"><button type="button" class="btn btn-outline-danger">LogOut</button></a>
+            </header>
+
+            <section class="grid">
+                <div class="card highlight">
+                    <h2>Current Humidity</h2>
+                    <p class="big">{{a}}</p>
+                </div>
+            </section>
+
+                
+            <section class="grid">
+                <div ><br>
+                    <h2>Humidity Trend</h2>
+                    <img src="data:image/png;base64,{{ graph }}" alt="LDR Graph">
+                </div>
+            
+            
+                <div>
+                    <h2>Humidity  sensor table</h2>
+                    <table>
+                        
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Humidity level</th>
+                        </tr>
+                    
+                        {% for time, H in zip_data %}
+                        <tr>
+                            <td>{{ time }}</td>
+                            <td>{{ H }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+
+            </section>
+        </main>
+    </div>
+
+    
+</body>
+
+</html>
+
+{%endblock%}

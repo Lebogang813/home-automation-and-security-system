@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{%block group16 %}Admin Login{%endblock%}
+
+{%block content %} 
+<body class="Login">
+  <div class="login-container">
+    <h1 class="log">Admin Login</h1>
+    <p class="subtitle">Enter admin credentials</p>
+
+    <form method="post" action="/admin-authenticate">
+      <div class="input-group">
+        <input type="email" placeholder="Admin email" name="email" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Admin password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-outline-primary">Log in</button>
+    </form>
+
+    <p class="signup-text">
+        OR  <a href="/signup">Signup as an Admin</a>
+      </p>
+
+    <p class="signup-text">
+      <a href="/">Back to home</a>
+    </p>
+  </div>
+</body>
+{%endblock%}

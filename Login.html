@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{%block group16 %}Login{%endblock%}
+
+{%block content %} 
+<body class="Login">
+  <body class="Login">
+    <div class="login-container">
+      <h1 class="log">Login</h1>
+      
+      <p class="subtitle">Enter your details to Login</p>
+      
+  
+      <form method="post" action="">
+        <div class="input-group">
+          <input type="text" placeholder="Enter your email" name="email" required>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Enter your password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Log in</button>
+      </form>
+  
+      <p class="signup-text">
+        Or <a href="/signup">Signup</a>
+      </p>
+    </div>
+</body>
+
+{%endblock%}

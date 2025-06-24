@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{%block group16%} Home Automation and security system{%endblock%}
+
+{%block content %} 
+ <body class="Welcome">
+    <img src="" alt="">
+<div class="welcome_container">
+    <h1>Home Automation & Security<br> Systems </h1>
+
+
+    <div class="icon">
+        <img  class="adminicon" src="/static/images/admin.jfif"alt="">
+    </div>
+
+        
+    <a class="btn btn-primary" href="/admin_login" role="button">Admin Login</a><br>
+          
+    <a class="btn btn-primary" href="/Login" role="button">   User 1  </a>
+    <a class="btn btn-primary" href="/Login" role="button">   User 2  </a>
+    <a class="btn btn-primary" href="/Login" role="button">   User 3  </a>
+    <a class="btn btn-primary" href="/Login" role="button">   User 4 </a>
+    <a class="btn btn-primary" href="/Login" role="button">   User 5 </a>
+    <br>
+    <a class="btn btn-primary" href="/Login" role="button">New users</a>
+    
+
+
+    <p class="or-text">OR</p>
+
+    <button type="button" class="btn btn-outline-primary" onclick="location.href='/signup'" >Sign up</button>
+</body>
+</div>
+
+
+
+
+
+    {%endblock%}

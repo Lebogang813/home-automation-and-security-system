@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{%block group16 %}Home Page{%endblock%}
+
+{%block content %} 
+<body class="home">
+
+    <div class="bar">
+        <span class="home-icon">HOME AUTOMATION AND SECURITY 
+            <img class="logo" src="/static/images/ourlogo.png" alt="Logo">
+        </span>
+        <a href="/"><button type="button" class="btn btn-outline-danger">Log Out</button></a>
+    </div>
+
+    <h1>Hi <span class="Adminname">{{ admin_name }}</span>, welcome to your home.</h1>
+
+    <div class="manage-section">
+        <p>Manage</p>
+        <div class="buttons">
+            <section class="grid">
+                <div class="card highlight">
+                    <h2>Current Temperature</h2>
+                    <p class="big">{{ T}}</p>
+                    <p>{{ temperature_status }}</p>
+                    <a class="btn btn-primary" href="/temperature" role="button">Temperature Page</a>
+                </div>
+            </section>
+            <section>
+                <div class="card highlight">
+                    <h2>Current Humidity</h2>
+                    <p class="big">{{H}}</p>
+                    <a class="btn btn-primary" href="/humidity" role="button">Humidity page </a>
+                </div>
+            </section>
+            <section>
+                <div class="card highlight">
+                    <h2>Brightness level outside</h2>
+                    <p class="big">{{L1}}</p>
+                    <p>{{ ldr1_status }}</p>
+                    <a class="btn btn-primary" href="/light" role="button">light page </a>
+                </div>
+            </section>
+            <section>
+                <div class="card highlight">
+                    <h2>House brightness level</h2>
+                    <p class="big">{{L2}}</p>
+                    <p>{{ curtain_msg }}</p>
+                    <a class="btn btn-primary" href="/curtains" role="button">curtain page </a>
+                </div>
+            </section>
+            <section>
+                <div class="card highlight">
+                    <h2>Motion Detection</h2>
+                    <p class="big">{{ motion}}</p>
+                    <p class="{{ motion_class }}">{{ motion_message }}</p>
+                    <a class="btn btn-primary" href="/motion" role="button">Motion page </a>
+                </div>
+            </section>
+
+            
+            
+            
+        </div>
+
+        <div class="card highlight">
+
+            <h3>Sensor Data Table </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timest</th>
+                        <th>Brightness level outside</th>
+                        <th>House brightness level</th>
+                        <th>Humidity</th>
+                        <th>Motion</th>
+                        <th>Temperature</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t, l1, l2, h, temp, ir in zip_data %}
+                    <tr>
+                        <td>{{ t }}</td>
+                        <td>{{ l1 }}</td>
+                        <td>{{ l2 }}</td>
+                        <td>{{ h }}</td>
+                        <td>{{ temp }}</td>
+                        <td>{{ ir }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <h3>Sensor Data Graph</h3>
+        <img src="data:image/png;base64,{{ graph }}" alt="Sensor Graph" style="width: 100%; max-width: 900px; border: 1px solid #ccc; padding: 10px; background: white;">
+        </div>
+
+        
+    </div>
+
+
+
+
+</body>
+
+
+{%endblock%}

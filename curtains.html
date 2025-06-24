@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block group16 %}Curtains{% endblock %}
+
+{% block content %}
+
+<body class="Curtains">
+  
+  <div class="content justify-content-center">
+    <h1 class="cur">Smart Curtain Control</h1>
+    <p class="text-center fw-bold">{{ message }}</p>
+
+    <p class="text-center fw-bold">Light Intensity:</p>
+    <span class="badge {{ badge_class }}">{{ value }}</span>
+
+    <br><br>
+    <button class="btn btn-secondary {{ badge_class }}" onclick="changeState('{{ next_state }}')">
+      {{ button_label }}
+    </button>
+    <br><br>
+  
+  
+
+    <table>
+      <tr>
+          <th>Timestamp</th>
+          <th>Intensity Value</th>
+      </tr>
+      {% for time, L in zip_data %}
+      <tr>
+          <td>{{ time }}</td>
+          <td>{{ L }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+
+  </div>
+  
+    <img src="data:image/png;base64,{{ graph }}" alt="LDR Graph">
+  
+
+
+  {{a}}
+
+  <script>
+    function changeState(newState) {
+      console.log("Changing state to:", newState);
+      // Add fetch/redirect here as needed
+    }
+  </script>
+</body>
+{% endblock %}

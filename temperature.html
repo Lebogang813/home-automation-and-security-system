@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{%block group16 %}Temperature{%endblock%}
+
+{%block content %} 
+<body class="temperature">
+    <div class="containerT">
+        <h1>Temperature Monitoring </h1>
+        <h2>Hello {{ user }}, monitor your sensor:</h2>
+        <div class="data-containerT">
+            <p>Current Temperature: {{a}}<span id="temperature">{{ temperature }}°C</span></p>
+        
+                <div class="alert-containerT">
+                    <p>Temperature is low. Please turn on the heater.</p>
+                    <button class="T" id="heater-button" onclick="toggleHeater()">Heater: Off</button>
+                </div>
+            
+                <div class="alert-containerT">
+                    <p>Temperature is high. Please turn on the AC.</p>
+                    <button class="T" id="ac-button" onclick="toggleAC()">AC: Off</button>
+                </div>
+        
+                <br>
+                <br>
+           
+
+        </div><br>
+        <h2>Temperature Sensor Trend </h2><br>
+        <img src="data:image/png;base64,{{ graph }}" alt="temperature Graph"><br>
+        <div>
+            <h2>Temperature Sensor table </h2>
+        <table>
+            <tr>
+                <th>Times</th>
+                <th>Temperature Value</th>
+            </tr>
+            {% for time, T in zip_data %}
+            <tr>
+                <td>{{ time }}</td>
+                <td>{{ T }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+        </div>
+        <br>
+        
+
+
+    </div>
+
+    {{a}}
+
+</body>
+</html>
+
+{%endblock%}
+
+

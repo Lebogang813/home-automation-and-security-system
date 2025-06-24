@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block group16 %}Lights Management{% endblock %}
+
+{% block content %}
+<body class="ldr">
+    <div class="top-bar">
+        <h2 class="m">Hello {{ user }},<br><p>LIght Management </p></h2>
+        
+
+        <a href="/"><button type="button" class="btn btn-outline-danger">LogOut</button></a>
+    </div>
+
+    
+
+    {% if ldr_value < 50 %}
+        <div class="status-msg">
+            <span class="circle-badge">Current light intensity: {{ ldr_value }}</span>
+
+            <p class="darktext">
+                It's <span class="dark">Dark</span> outside
+              
+            </p>
+            <p class="darktext">Switch <span class="on">ON</span> your light</p>
+            <div class="icon">🌙✨</div>
+        </div>
+    {% else %}
+        <div class="status-msg">
+            <span class="circle-badge">Current light intensity: {{ ldr_value }}</span>
+
+            <p class="darktext" >
+                There's <span class="light">Light</span> outside
+                
+            </p  >
+            <p class="darktext" >Switch <span class="off">OFF</span> your lights</p>
+            <div class="icon">☀️</div>
+
+
+            
+        </div>
+    {% endif %}
+
+    <div class="controls">
+
+        <h1> LDR Sensor Table</h1><br>
+    <table>
+        <tr>
+            <th>Timestamp</th>
+            <th>LDR_1 Value</th>
+        </tr>
+        {% for time, ldr_value in zip_data %}
+        <tr>
+            <td>{{ time }}</td>
+            <td>{{ ldr_value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+        <br>
+        <br>
+
+        <div class="control">
+            <span class="text">The Whole house</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="control">
+            <span class="text">Sitting & Dining room</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="control">
+            <span class="text">Kitchen</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="control">
+            <span class="text">Bedroom</span>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+
+    <img src="data:image/png;base64,{{ graph }}" alt="LDR Graph">
+
+   
+
+    
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/homepage"><button type="button" class="btn btn-outline-primary">Back</button></a>
+    </div>
+
+    <br><br>
+</body>
+
+{% endblock %}
